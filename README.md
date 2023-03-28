@@ -1,6 +1,7 @@
 # UsersAPI
 
-Este é um projeto de API de usuários que pode ser executado com o Docker. **Certifique-se de ter o Docker instalado** em seu
+Este é um projeto de API de usuários que pode ser executado com o Docker. **Certifique-se de ter o Docker instalado** em
+seu
 sistema antes de executar o projeto.
 
 ![demo.png](assets/img/demo.png)
@@ -15,7 +16,7 @@ sistema antes de executar o projeto.
 docker-compose up -d
 ```
 
-4. Acesse a API através do endereço <a href="http://localhost/api/users" target="_blank"> http://localhost/api/users </a>
+4. Acesse a API através do endereço [http://localhost/api/users](http://localhost/api/users)
 
 Certifique-se de que as portas **80 (default)** e **5432** esteja disponível em sua máquina antes de executar o projeto.
 
