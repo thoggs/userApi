@@ -9,6 +9,3 @@ RUN chmod +x /start.sh
 
 # Defina o script de inicialização como ponto de entrada
 ENTRYPOINT ["/start.sh"]
-
-
-
