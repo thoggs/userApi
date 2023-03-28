@@ -43,11 +43,16 @@ with tqdm(desc='Installing requirements', unit='package') as progress:
     progress.update()
 
 # Executa as migrações do banco de dados
-os.chdir('/app')
-subprocess.run(['python', 'manage.py', 'migrate'])
+with tqdm(desc='Migrating database', unit='step') as progress:
+    os.chdir('/app')
+    subprocess.run(['python', 'manage.py', 'migrate'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    progress.update()
 
 # Coleta os arquivos estáticos do Django
-subprocess.run(['python', 'manage.py', 'collectstatic'])
+with tqdm(desc='Collecting static files', unit='file') as progress:
+    subprocess.run(['python', 'manage.py', 'collectstatic'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    progress.update()
 
 # Inicia o servidor web Gunicorn
 subprocess.run(['gunicorn', 'userApi.wsgi:application', '--bind', 'web:8000'])
+
