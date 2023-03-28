@@ -9,6 +9,3 @@ RUN chmod +x /start.sh
 
 # Defina o script de inicialização como ponto de entrada
 ENTRYPOINT ["/start.sh"]
-
-# Mantenha o contêiner em execução com o comando tail
-CMD ["tail", "-f", "/dev/null"]
