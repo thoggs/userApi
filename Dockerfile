@@ -11,4 +11,4 @@ COPY .github/scripts/start.py /start.py
 RUN chmod +x /start.py
 
 # Defina o script de inicialização como ponto de entrada
-ENTRYPOINT ["/start.py"]
+ENTRYPOINT ["python", "/start.py"]
