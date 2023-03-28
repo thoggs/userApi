@@ -1,40 +1,53 @@
+# import os
+# import subprocess
+#
+# # Cria a pasta static se ainda não existir
+# if not os.path.isdir('/app/static'):
+#     os.makedirs('/app/static')
+#
+# # Copia os arquivos do projeto para o diretório /app
+# subprocess.run(['cp', '-r', '.', '/app'])
+#
+# # Instala pacotes necessários
+# subprocess.run(['pip', 'install', '--upgrade', 'pip'])
+# subprocess.run(['pip', 'install', '-r', '/app/requirements.txt'])
+#
+# # Executa as migrações do banco de dados
+# os.chdir('/app')
+# subprocess.run(['python', 'manage.py', 'migrate'])
+#
+# # Coleta os arquivos estáticos do Django
+# subprocess.run(['python', 'manage.py', 'collectstatic'])
+#
+# # Inicia o servidor web Gunicorn
+# subprocess.run(['gunicorn', 'userApi.wsgi:application', '--bind', 'web:8000'])
+
 import os
+import subprocess
 from tqdm import tqdm
 
-
-# Define uma função auxiliar para executar um comando com barras de progresso
-def run_with_progress(command, desc):
-    with tqdm(desc=desc, unit="") as progress:
-        for line in os.popen(command):
-            progress.update()
-
-
-# Cria o ambiente virtual na pasta .venv
-run_with_progress("python -m venv /app/.venv", "Criando ambiente virtual")
-
-# Ativa o ambiente virtual
-activate = "/app/.venv/bin/activate"
-if os.path.isfile(activate):
-    exec(open(activate).read(), {"__file__": activate})
-
-# Define o caminho do sistema para o ambiente virtual
-os.environ["PATH"] = "/app/.venv/bin:" + os.environ["PATH"]
-
 # Cria a pasta static se ainda não existir
-if not os.path.isdir("/app/static"):
-    os.mkdir("/app/static")
+if not os.path.isdir('/app/static'):
+    os.makedirs('/app/static')
 
 # Copia os arquivos do projeto para o diretório /app
-run_with_progress("cp -r . /app", "Copiando arquivos")
+with tqdm(desc='Copying files', unit='file') as progress:
+    subprocess.run(['cp', '-r', '.', '/app'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    progress.update()
 
 # Instala pacotes necessários
-run_with_progress("pip install --upgrade pip && pip install -r /app/requirements.txt", "Instalando pacotes")
+with tqdm(desc='Installing requirements', unit='package') as progress:
+    subprocess.run(['pip', 'install', '--upgrade', 'pip'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    progress.update()
+    subprocess.run(['pip', 'install', '-r', '/app/requirements.txt'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    progress.update()
 
 # Executa as migrações do banco de dados
-run_with_progress("python manage.py migrate", "Executando migrações")
+os.chdir('/app')
+subprocess.run(['python', 'manage.py', 'migrate'])
 
 # Coleta os arquivos estáticos do Django
-run_with_progress("python manage.py collectstatic", "Coletando arquivos estáticos")
+subprocess.run(['python', 'manage.py', 'collectstatic'])
 
 # Inicia o servidor web Gunicorn
-os.execlp("gunicorn", "gunicorn", "userApi.wsgi:application", "--bind", "web:8000")
+subprocess.run(['gunicorn', 'userApi.wsgi:application', '--bind', 'web:8000'])

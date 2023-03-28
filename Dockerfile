@@ -3,6 +3,12 @@ FROM python:3.11.2
 # Defina o diretório de trabalho como /app
 WORKDIR /app
 
+# Cria um ambiente virtual na pasta .venv
+RUN python -m venv .venv
+
+# Ativa o ambiente virtual
+ENV PATH="/app/.venv/bin:$PATH"
+
 # Instale as dependências
 RUN pip install tqdm
 
