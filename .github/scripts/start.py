@@ -1,27 +1,3 @@
-# import os
-# import subprocess
-#
-# # Cria a pasta static se ainda não existir
-# if not os.path.isdir('/app/static'):
-#     os.makedirs('/app/static')
-#
-# # Copia os arquivos do projeto para o diretório /app
-# subprocess.run(['cp', '-r', '.', '/app'])
-#
-# # Instala pacotes necessários
-# subprocess.run(['pip', 'install', '--upgrade', 'pip'])
-# subprocess.run(['pip', 'install', '-r', '/app/requirements.txt'])
-#
-# # Executa as migrações do banco de dados
-# os.chdir('/app')
-# subprocess.run(['python', 'manage.py', 'migrate'])
-#
-# # Coleta os arquivos estáticos do Django
-# subprocess.run(['python', 'manage.py', 'collectstatic'])
-#
-# # Inicia o servidor web Gunicorn
-# subprocess.run(['gunicorn', 'userApi.wsgi:application', '--bind', 'web:8000'])
-
 import os
 import subprocess
 from tqdm import tqdm
@@ -55,4 +31,3 @@ with tqdm(desc='Collecting static files', unit='file') as progress:
 
 # Inicia o servidor web Gunicorn
 subprocess.run(['gunicorn', 'userApi.wsgi:application', '--bind', 'web:8000'])
-
