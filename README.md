@@ -1,6 +1,6 @@
 # UsersAPI
 
-Este é um projeto de API de usuários, construido com Django e DRF (Django Rest Framework), inteiramente em Python. Pode ser executado com o Docker. 
+Este é um projeto de API de usuários, construído com Django e DRF (Django Rest Framework), inteiramente em Python. Pode ser executado com o Docker.
 
 ## API navegável
 
