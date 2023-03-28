@@ -21,7 +21,7 @@ def run_command(cmd, desc):
 run_command(['python', '-m', 'venv', '/app/.venv'], 'Criando ambiente virtual')
 
 # Ativa o ambiente virtual
-run_command(['source', '/app/.venv/bin/activate'], 'Ativando ambiente virtual')
+run_command(['bash', '-c', 'source /app/.venv/bin/activate'], 'Ativando ambiente virtual')
 
 # Define o caminho do sistema para o ambiente virtual
 run_command(['export', 'PATH="/app/.venv/bin:$PATH"'], 'Definindo caminho do sistema')
