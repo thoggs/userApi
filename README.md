@@ -15,7 +15,7 @@ sistema antes de executar o projeto.
 docker-compose up -d
 ```
 
-4. Acesse a API através do endereço http://localhost/api/users
+4. Acesse a API através do endereço <a href="http://localhost/api/users" target="_blank"> http://localhost/api/users </a>
 
 Certifique-se de que as portas **80 (default)** e **5432** esteja disponível em sua máquina antes de executar o projeto.
 
