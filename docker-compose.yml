@@ -47,7 +47,6 @@ services:
       - web
     networks:
       - core_network
-    working_dir: /app
 
 networks:
   core_network:

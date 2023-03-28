@@ -12,9 +12,6 @@ RUN . /app/.venv/bin/activate
 # Define o caminho do sistema para o ambiente virtual
 RUN export PATH="/app/.venv/bin:$PATH"
 
-# Cria a pasta static se ainda não existir
-RUN if [ ! -d "/app/static" ]; then mkdir -p /app/static; fi
-
 # Copia os arquivos do projeto para o diretório /app
 COPY . /app
 
