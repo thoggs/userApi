@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: django-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: django-api
+    spec:
+      containers:
+        - name: django-api
+          image: ${{ vars.GAR_LOCATION }}-docker.pkg.dev/${{ secrets.GKE_PROJECT }}/${{ vars.REPOSITORY }}/${{ vars.IMAGE }}:$GITHUB_SHA
+          ports:
+            - containerPort: 8000
+        - name: nginx
+          image: nginx:latest
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-configmap

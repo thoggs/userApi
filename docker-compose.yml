@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+  db:
+    restart: always
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: core
+    ports:
+      - "5432:5432"
+    networks:
+      - core_network
+
+  web:
+    container_name: web
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - static_volume:/app/static  # adicionado
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    networks:
+      - core_network
+    working_dir: /app
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    volumes:
+      - .github/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/static  # adicionado
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    networks:
+      - core_network
+    working_dir: /app
+
+networks:
+  core_network:
+    driver: bridge
+
+volumes:
+  static_volume:  # adicionado
+  db_data:  # adicionado
