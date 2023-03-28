@@ -6,8 +6,9 @@ WORKDIR /app
 # Cria um ambiente virtual na pasta .venv
 RUN python -m venv .venv
 
-# Ativa o ambiente virtual
+# Ativa o ambiente virtual e define o caminho do sistema para o ambiente virtual
 ENV PATH="/app/.venv/bin:$PATH"
+RUN .venv/bin/activate && pip install --upgrade pip
 
 # Instale as dependências
 RUN pip install tqdm
