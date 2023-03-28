@@ -1,8 +1,7 @@
-from django.urls import path
-
-from api.views import index
+from django.urls import path, include
+from api.views import UserListView, UserDetailView
 
 urlpatterns = [
-    path('users', index, name='users'),
-    path('users/<int:user_id>', index, name='user-detail'),
+    path('users/', UserListView.as_view(), name='user-list'),
+    path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail')
 ]

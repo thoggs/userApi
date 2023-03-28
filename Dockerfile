@@ -3,7 +3,7 @@ FROM python:3.11.2
 # Defina o diretório de trabalho como /app
 WORKDIR /app
 
-# Instale as dependências
+# Instale o tqdm
 RUN pip install tqdm
 
 # Copie o script de inicialização para o contêiner
