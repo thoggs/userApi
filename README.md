@@ -22,4 +22,4 @@ Certifique-se de que as portas **80 (default)** e **5432** esteja disponível em
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](./LICENSE). Consulte o arquivo LICENSE.md para obter mais detalhes.
+Este projeto está licenciado sob a [Licença MIT](./LICENSE). Consulte o arquivo LICENSE para obter mais detalhes.
