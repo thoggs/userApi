@@ -1,16 +1,17 @@
 # UsersAPI
 
-Este é um projeto de API de usuários que pode ser executado com o Docker. **Certifique-se de ter o Docker instalado** em
-seu
-sistema antes de executar o projeto.
+Este é um projeto de API de usuários, construido com Django e DRF (Django Rest Framework), inteiramente em Python. Pode ser executado com o Docker. 
+
+## API navegável
 
 ![demo.png](assets/img/demo.png)
 
 ## Como executar o projeto
 
-1. Clone o repositório em sua máquina local.
-2. Navegue até a raiz do projeto no terminal.
-3. Execute o seguinte comando para iniciar o projeto:
+1. Certifique-se de ter o Docker instalado em seu sistema antes de executar o projeto.
+2. Clone o repositório em sua máquina local.
+3. Navegue até a raiz do projeto no terminal.
+4. Execute o seguinte comando para iniciar o projeto:
 
 ```bash 
 docker-compose up -d
@@ -22,4 +23,4 @@ Certifique-se de que as portas **80 (default)** e **5432** esteja disponível em
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](./LICENSE). Consulte o arquivo LICENSE para obter mais detalhes.
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/license/mit/). Consulte o arquivo [LICENSE](./LICENSE) para obter mais detalhes.
