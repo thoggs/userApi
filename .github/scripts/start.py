@@ -20,9 +20,14 @@ with tqdm(desc='Instalando requisitos', unit='package') as progress:
     subprocess.run(['pip', 'install', '-r', '/app/requirements.txt'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     progress.update()
 
+# Cria as migrações do banco de dados
+with tqdm(desc='Criando migrações', unit='step') as progress:
+    os.chdir('/app')
+    subprocess.run(['python', 'manage.py', 'makemigrations'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    progress.update()
+
 # Executa as migrações do banco de dados
 with tqdm(desc='Migrando banco de dados', unit='step') as progress:
-    os.chdir('/app')
     subprocess.run(['python', 'manage.py', 'migrate'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     progress.update()
 
