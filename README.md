@@ -1,6 +1,7 @@
 # UsersAPI
 
-UsersAPI é um projeto RESTful desenvolvido com Django e Django Rest Framework em Python, que oferece recursos como autenticação de token e CRUD de usuários. É possível executar a API usando o Docker com um único comando.
+UsersAPI é um projeto RESTful desenvolvido com Django e Django Rest Framework em Python, que oferece recursos como
+autenticação de token e CRUD de usuários. É possível executar a API usando o Docker com um único comando.
 
 ## API navegável
 
@@ -12,7 +13,8 @@ UsersAPI é um projeto RESTful desenvolvido com Django e Django Rest Framework e
    e [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) instalado em seu sistema antes de executar o
    projeto.
 
-2. Certifique-se de que as portas **80 (default)** e **5432** estejam disponíveis em sua máquina antes de executar o projeto.
+2. Certifique-se de que as portas **80 (default)** e **5432** estejam disponíveis em sua máquina antes de executar o
+   projeto.
 
 3. Clone o repositório em sua máquina local utilizando o comando `git clone https://github.com/thoggs/userApi.git`.
 
@@ -35,7 +37,8 @@ siga as instruções abaixo:
 
 3. Insira suas credenciais de usuário administrador (email e senha).
 
-- Se você ainda não criou um usuário administrador, crie um novo usuário utilizando o comando `docker exec -it web python manage.py createsuperuser`; Siga as instruções na tela para criar o superusuário.
+- Se você ainda não criou um usuário administrador, crie um novo usuário utilizando o
+  comando `docker exec -it web python manage.py createsuperuser`; Siga as instruções na tela para criar o superusuário.
 
 - Certifique-se de ter habilitado as permissões de autenticação no arquivo `settings.py`
   definindo `ENABLE_PERMISSIONS = True`.
