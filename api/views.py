@@ -1,8 +1,10 @@
 from rest_framework import status, viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from api.models import User
+from api.permission import PermissionSettings
 from api.serializers import UserSerializer, ObtainTokenSerializer
 
 
@@ -14,7 +16,7 @@ class ObtainTokenViewSet(viewsets.ModelViewSet, TokenObtainPairView):
     def list(self, request, *args, **kwargs):
         return Response({
             "data": {},
-            "errors": [{"message": "Method \"GET\" not allowed"}],
+            "errors": [{"message": "Método \"GET\" não é aceito para este endpoint."}],
             "code": status.HTTP_405_METHOD_NOT_ALLOWED
         })
 
@@ -38,7 +40,7 @@ class ObtainTokenViewSet(viewsets.ModelViewSet, TokenObtainPairView):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = PermissionSettings(permission_classes=[IsAuthenticated]).get_permission_classes()
 
     queryset = User.objects.all()
     serializer_class = UserSerializer

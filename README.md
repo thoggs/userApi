@@ -1,6 +1,7 @@
 # UsersAPI
 
-Este é um projeto de API de usuários, construído com Django e DRF (Django Rest Framework), inteiramente em Python. Pode ser executado com o Docker.
+Este é um projeto de API de usuários, construído com Django e DRF (Django Rest Framework), inteiramente em Python. Pode
+ser executado com o Docker.
 
 ## API navegável
 
@@ -17,10 +18,19 @@ Este é um projeto de API de usuários, construído com Django e DRF (Django Res
 docker-compose up -d
 ```
 
-- Acesse a API através do endereço [http://localhost/api/users](http://localhost/api/users)
+- Após subir os containers, execute o seguinte comando para criar um superusuário no banco de dados:
+
+```bash
+docker-compose exec web python manage.py createsuperuser
+```
+
+Siga as instruções na tela para criar o superusuário.
+
+- Acesse o API Root do DRF através do endereço [http://localhost/api](http://localhost/api)
 
 Certifique-se de que as portas **80 (default)** e **5432** esteja disponível em sua máquina antes de executar o projeto.
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](https://opensource.org/license/mit/). Consulte o arquivo [LICENSE](./LICENSE) para obter mais detalhes.
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/license/mit/). Consulte o
+arquivo [LICENSE](./LICENSE) para obter mais detalhes.
