@@ -32,7 +32,7 @@ Para ter acesso total à API, é necessário fazer login como um usuário com pe
 
 3. Insira suas credenciais de usuário administrador (email e senha).
 
-- Se você ainda não criou um usuário administrador, crie um novo usuário utilizando o comando `docker exec -it web python manage.py createsuperuser`.
+- Se você ainda não criou um usuário administrador, crie um novo usuário utilizando o comando `docker exec -it web python manage.py createsuperuser`; Siga as instruções na tela para criar o superusuário.
 
 - Certifique-se de ter habilitado as permissões de autenticação no arquivo `settings.py` definindo `ENABLE_PERMISSIONS = True`.
 
