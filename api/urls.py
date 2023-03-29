@@ -1,7 +1,10 @@
-from django.urls import path, include
-from api.views import UserListView, UserDetailView
+from rest_framework import routers
 
-urlpatterns = [
-    path('users/', UserListView.as_view(), name='user-list'),
-    path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail')
-]
+from api.views import UserViewSet, ObtainTokenViewSet
+
+
+class ApiRouter(routers.DefaultRouter):
+    def __init__(self):
+        super().__init__()
+        self.register(r'users', UserViewSet, basename='users')
+        self.register(r'token', ObtainTokenViewSet, basename='obtain-token')
