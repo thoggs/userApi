@@ -99,12 +99,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Django Rest Framework
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'rest_framework.authentication.TokenAuthentication',
     'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
 
+# Django Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -117,10 +119,12 @@ REST_FRAMEWORK = {
     ),
 }
 
+# Django Rest Framework Simple JWT
 AUTH_USER_MODEL = 'api.User'
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=720),
 }
 
+# Project permissions flag
 ENABLE_PERMISSION = True
